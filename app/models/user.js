@@ -50,7 +50,7 @@ class User {
             })
         });
     }
-
+ 
     updateUser(userData) {
         return new Promise(async (resolve, reject) => {
             await user.update(userData, (err, res) => {
@@ -59,6 +59,7 @@ class User {
             })
         });
     }
+
 
 }
 

@@ -9,5 +9,4 @@ router
     .post('/', userController.createUser)
     .delete('/', userController.deleteUser)
     .put('/', userController.updateUser)
-
 module.exports = router;

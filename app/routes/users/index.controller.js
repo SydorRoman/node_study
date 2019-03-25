@@ -26,6 +26,7 @@ const deleteUser = async (req, res) => {
     const deletedUser = await new User().deleteUserById(id);
     return apiHelper.builder(res, deletedUser);
 }
+const updateUser = () =>{}
 
 module.exports = {
     getAllUsers,
