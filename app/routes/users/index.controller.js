@@ -20,12 +20,11 @@ const createUser = async (req, res) => {
     return apiHelper.builder(res, createdUser);
 }
 
-const deleteUser = () => {
-
-}
-
-const updateUser = () => {
-
+const deleteUser = async (req, res) => {
+    const id = req.params;
+    console.log(id);
+    const deletedUser = await new User().deleteUserById(id);
+    return apiHelper.builder(res, deletedUser);
 }
 
 module.exports = {
