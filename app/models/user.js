@@ -42,6 +42,23 @@ class User {
             })
         });
     }
+    deleteUserById(id){
+        return new Promise(async (resolve, reject) => {
+            await user.findByIdAndDelete(id, (err, res) => {
+                if (err) reject(err);
+                resolve(res);
+            })
+        });
+    }
+
+    updateUser(userData) {
+        return new Promise(async (resolve, reject) => {
+            await user.update(userData, (err, res) => {
+                if (err) reject(err);
+                resolve(res);
+            })
+        });
+    }
 
 }
 
