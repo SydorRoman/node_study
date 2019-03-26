@@ -16,17 +16,21 @@ const getAllUsers = async (req,res) => {
 const createUser = async (req, res) => {
 
     const user = req.body;
-    const createdUser = await new User().createUser(user);
+    const createdUser = await new User().createUser(user); // зроби як в get AllUsers через then and catch
     return apiHelper.builder(res, createdUser);
 }
 
-const deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => { // does it work?
     const id = req.params;
-    console.log(id);
+    console.log(id); // ?
     const deletedUser = await new User().deleteUserById(id);
     return apiHelper.builder(res, deletedUser);
 }
-const updateUser = () =>{}
+const updateUser = () =>{} // дороби
+
+// зроби апішку щоб дістати тільки одного юзера по ід
+// і дороби таск https://trello.com/c/so8MJK4b/6-user-model
+// коли зробиш пересунь карточку в реді ту тестінг))
 
 module.exports = {
     getAllUsers,

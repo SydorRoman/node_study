@@ -28,7 +28,7 @@ class User {
     getAllUsers() {
         return new Promise(async (resolve, reject) => {
             await user.find({}, (err, users) => {
-                if (err) reject(err);
+                if (err) return reject(err);
                 resolve(users);
             })
         });
@@ -37,7 +37,7 @@ class User {
     createUser(userData) {
         return new Promise(async (resolve, reject) => {
             await user.create(userData, (err, res) => {
-                if (err) reject(err);
+                if (err) return reject(err);
                 resolve(res);
             })
         });
@@ -45,7 +45,7 @@ class User {
     deleteUserById(id){
         return new Promise(async (resolve, reject) => {
             await user.findByIdAndDelete(id, (err, res) => {
-                if (err) reject(err);
+                if (err) return reject(err);
                 resolve(res);
             })
         });
@@ -54,7 +54,7 @@ class User {
     updateUser(userData) {
         return new Promise(async (resolve, reject) => {
             await user.update(userData, (err, res) => {
-                if (err) reject(err);
+                if (err) return reject(err);
                 resolve(res);
             })
         });
