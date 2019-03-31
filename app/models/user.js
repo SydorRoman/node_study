@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 const { Schema } = mongoose;
 
 const userScheme = new Schema({
@@ -14,6 +16,15 @@ const userScheme = new Schema({
         type: String,
         default: ''
     },
+    email: {
+        type: String,
+        default: '',
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
 }, { 
     versionKey: false 
 })
@@ -60,6 +71,18 @@ class User {
         });
     }
 
+    getByEmail(email) {
+        return new Promise(async (resolve, reject) => {
+            await user.findOne({email}, (err, res) => {
+                if(err) reject(err);
+                resolve(res);
+            })
+        })
+    }
+
+    checkPassword(first, second) {
+        return bcrypt.compareSync(first, second);
+    }
 }
 
 module.exports = User;

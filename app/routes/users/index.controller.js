@@ -1,13 +1,13 @@
 const User = require('../../models/user');
 const apiHelper = require('../../helpers/api');
-const getError = require('../../helpers/error-maker')
+const getError = require('../../helpers/error-maker');
 
 const getAllUsers = async (req,res) => {
     // const users = await new User().getAllUsers();
     // return apiHelper.builder(res, users);
 
     // ці записи еквівалнтні
-
+    
     await new User().getAllUsers()
         .then(users => apiHelper.builder(res, users))
         .catch(err => apiHelper.builder(res, getError(err)))
@@ -25,6 +25,10 @@ const deleteUser = async (req, res) => {
     console.log(id);
     const deletedUser = await new User().deleteUserById(id);
     return apiHelper.builder(res, deletedUser);
+}
+
+const updateUser = (req, res) => {
+
 }
 
 module.exports = {
