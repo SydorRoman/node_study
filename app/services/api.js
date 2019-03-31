@@ -6,7 +6,8 @@ const config = require('config');
 const app = express();
 
 // routes
-const userRoute = require('../routes/users')
+const userRoute = require('../routes/users');
+const authRoute = require('../routes/auth')
 // "mongodb://localhost:27017/usersdb"
 
 // db connect
@@ -24,6 +25,7 @@ app
   .use(bodyParser.json());
 
 app.use('/users', userRoute);
+app.use('/auth', authRoute);
 
 app.listen(config.get('api.port'), () => {
   console.log('*** Server Started ***');
