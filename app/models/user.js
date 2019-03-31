@@ -47,6 +47,7 @@ class User {
 
     createUser(userData) {
         return new Promise(async (resolve, reject) => {
+            userData.password = bcrypt.hashSync(userData.password, constants.PASS_SALT);
             await user.create(userData, (err, res) => {
                 if (err) reject(err);
                 resolve(res);

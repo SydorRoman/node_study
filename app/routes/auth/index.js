@@ -5,7 +5,7 @@ const authController = require('./index.controller');
 const router = express.Router();
 
 router
-    .post('/signin', authController.singIn)
-    .post('/signup', authController.login)
+    .post('/login', authController.logIn)
+    .post('/signup', authController.singUp)
 
 module.exports = router;
